@@ -32,7 +32,6 @@ jobs:
     
     - name: Docker Meta 📄
       id: meta
-      if: startsWith(github.ref, 'refs/tags/v')
       uses: docker/metadata-action@v4
       with:
         images: |
@@ -41,7 +40,6 @@ jobs:
       
     - name: Build and Push ⚙
       uses: docker/build-push-action@v3
-      if: startsWith(github.ref, 'refs/tags/v')
       with:
         push: startsWith(github.ref, 'refs/tags/v')
         context: .
